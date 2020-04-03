@@ -35,26 +35,26 @@ namespace dnet_vj5
             sveZabe.Add(zaba.Naziv, zaba);
             label1 = new Label
             {
-                Location = Cursor.Position,
+                Location = this.PointToClient(Cursor.Position),
                 Text = zaba.Naziv,
                 AutoSize = true
             };
-            this.Controls.Add(label1);
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            label1.Click += new EventHandler((s, b) =>
+            label1.Click += (s, b) =>
             {
+                Label l = (Label)s;
                 if (cnt == 1)
                     MessageBox.Show("hoću još žaba", "Roda");
-                this.Controls.Remove(label1);
+                this.Controls.Remove(l);
                 cnt--;
-                sveZabe.Remove(label1.Text);
+                sveZabe.Remove(l.Text);
 
 
-            });
+            };
+            this.Controls.Add(label1);
 
         }
+
+        
     }
 }
